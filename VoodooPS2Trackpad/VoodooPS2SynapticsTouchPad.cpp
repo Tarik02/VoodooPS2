@@ -1707,6 +1707,11 @@ void ApplePS2SynapticsTouchPad::sendTouchData() {
         transducer->secondary_id = i;
     }
 
+    if (dimensions_changed)
+    {
+        DEBUG_LOG("VoodooPS2 dimensions changed: min (%u, %u), max (%u, %u)", mt_interface->logical_min_x, mt_interface->logical_min_y, mt_interface->logical_max_x, mt_interface->logical_max_y);
+    }
+
     if (transducers_count != clampedFingerCount)
         IOLog("synaptics_parse_hw_state: WTF?! tducers_count %d clampedFingerCount %d", transducers_count, clampedFingerCount);
 
